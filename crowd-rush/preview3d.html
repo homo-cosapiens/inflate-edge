@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>群勢ラッシュ — 3Dモデル確認</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100dvh;display:grid;place-items:center;padding:16px;background:linear-gradient(145deg,#d8f8ff,#a8e9ff 55%,#c6ffe9);font:16px system-ui,sans-serif;color:#164365}
+main{width:min(100%,560px);text-align:center}
+h1{margin:0 0 8px;color:#087fb4;font-size:clamp(1.4rem,5vw,2rem)}
+#status{display:inline-block;margin:0 0 12px;padding:7px 14px;border-radius:99px;background:#fff;font-weight:700;color:#087f7c}
+#previewCanvas{display:block;width:min(100%,520px);height:auto;aspect-ratio:1;margin:auto;background:linear-gradient(#c8f5ff,#f3fffa);border:5px solid white;border-radius:24px;box-shadow:0 7px 0 #68bfd0,0 12px 24px #3888a633}
+p{color:#285f78;font-size:.9rem}
+</style>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"}}
+</script>
+</head>
+<body><main>
+<h1>群勢ラッシュ — 3Dモデル確認</h1>
+<p id="status" role="status">GLBモデルを待っています…</p>
+<canvas id="previewCanvas" width="720" height="720" aria-label="3Dキャラクタープレビュー"></canvas>
+<p>Kenney Mini Characters のモデル表示確認用。ゲーム進行はありません。</p>
+</main>
+<script type="module" src="preview3d.js"></script>
+</body>
+</html>
