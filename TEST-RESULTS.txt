@@ -1,0 +1,20 @@
+ふくらめ、ギリギリ — テスト結果
+
+対象: GitHubの prototype/inflate-edge ブランチから取得した最新ファイル。
+index.html / game.js / README.md は内容を変更せず収録。各ファイルのGit blob SHAは取得元と一致。
+
+実行済み検査
+- Node.js構文検査 (`node --check game.js`): PASS。
+- Node.js上の模擬DOM / Canvas / requestAnimationFrameロジック検査: PASS。
+  - HTML要素IDとgame.js参照、game.jsのscript参照
+  - Space長押しで膨張、離した時点では未加点、縮小完了後に一度だけ加点
+  - 最小半径での刃通過は被弾しない
+  - 膨らんだ球への刃の命中、同じ刃による重複被弾なし
+  - 3回被弾で終了、リトライ時に状態をリセット
+  - blur / pointercancel で保留点を破棄
+  - 60秒の時間切れとリトライ
+
+実ブラウザ
+- 未確認。ブラウザ起動は `ERR_BLOCKED_BY_ADMINISTRATOR` で拒否されたため、制限回避は行っていない。
+
+注意: 模擬DOMの実行テスト結果であり、実ブラウザでの描画・入力を検証したものではない。
