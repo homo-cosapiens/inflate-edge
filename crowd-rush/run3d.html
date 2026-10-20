@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>群勢ラッシュ — 3Dラン</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100dvh;display:grid;place-items:center;padding:10px;background:radial-gradient(circle at 15% 5%,#fff4c9,transparent 30%),linear-gradient(145deg,#d8f8ff,#a8e9ff 55%,#c6ffe9);color:#164365;font:15px system-ui,sans-serif}
+main{width:min(100%,520px);display:flex;flex-direction:column;align-items:center;gap:8px}
+h1{margin:0;color:#087fb4;font-size:clamp(1.45rem,6vw,2rem);font-weight:900;text-shadow:0 2px #fff}
+.hud{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.pill{min-width:0;padding:7px 4px;text-align:center;background:#fff;border:2px solid #b4e9f4;border-radius:15px;box-shadow:0 3px 0 #86cedd;font-size:.72rem;font-weight:750}
+.pill strong{display:block;font-size:1.15rem;color:#078b83;overflow-wrap:anywhere}
+#playCanvas{display:block;width:min(100%,420px,calc((100dvh - 255px)*.65625));aspect-ratio:21/32;background:linear-gradient(#c8f5ff,#f3fffa);border:5px solid #fff;border-radius:24px;box-shadow:0 7px 0 #68bfd0,0 12px 24px #3888a633;touch-action:none}
+#status{margin:0;padding:6px 14px;border-radius:99px;background:#fff;font-weight:750;color:#087f7c;text-align:center}
+p{margin:0;text-align:center;font-size:.82rem;font-weight:650;color:#285f78}
+.btn-group{display:flex;gap:10px;align-items:center}
+button{border:0;border-radius:99px;padding:10px 28px;background:#ffca55;color:#67420a;box-shadow:0 4px 0 #d99a2e;font:800 1rem system-ui;cursor:pointer}
+button:disabled{opacity:0.6;cursor:not-allowed}
+button:focus-visible{outline:3px solid #087fb4;outline-offset:3px}
+#soundButton{background:#b4e9f4;color:#164365;box-shadow:0 4px 0 #86cedd;padding:10px 18px;font-size:.9rem}
+@media(max-height:680px){main{gap:5px}h1{font-size:1.3rem}.pill{padding:4px 2px}.pill strong{font-size:1rem}#playCanvas{width:min(100%,420px,calc((100dvh - 205px)*.65625))}p{font-size:.75rem}button{padding:7px 24px}}
+</style>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"}}
+</script>
+</head>
+<body><main>
+<h1>群勢ラッシュ 25秒</h1>
+<div class="hud">
+<div class="pill">実人数<strong id="crowdCount">20 人</strong></div>
+<div class="pill">表示 / 上限<strong id="visibleCount">20 / 80体</strong></div>
+<div class="pill">経過時間<strong id="elapsedTime">0.0 秒</strong></div>
+</div>
+<canvas id="playCanvas" width="420" height="640" aria-label="3D群れランナー">3Dゲーム画面</canvas>
+<p id="status" role="status">モデル準備中…</p>
+<p>左右で数を増やす。橙の判定リングを赤い障害に当てない。最後は人数で壁を破壊。</p>
+<div class="btn-group">
+<button id="soundButton" type="button">音: OFF</button>
+<button id="startButton" type="button" disabled>スタート / リトライ</button>
+</div>
+</main>
+<script type="module" src="run3d.js"></script>
+</body></html>
