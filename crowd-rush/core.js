@@ -1,0 +1,4 @@
+(()=>{const s={time:0,x:210,count:10,rows:[],hazards:[],phase:"ready",enemy:80,flash:0};
+function reset(){Object.assign(s,{time:0,x:210,count:10,rows:[],hazards:[],phase:"run",enemy:80,flash:0});const gates=[[15,2],[20,2],[10,3],[25,2],[15,3],[30,2]];gates.forEach((v,i)=>s.rows.push({y:-180+i*125,left:"+"+v[0],right:"×"+v[1],add:v[0],mul:v[1],done:false}));}
+function step(dt){if(s.phase!=="run"||!Number.isFinite(dt)||dt<=0)return;s.time+=dt;s.rows.forEach(r=>{r.y+=55*dt;if(!r.done&&r.y>=480){if(s.x<210)s.count+=r.add;else s.count*=r.mul;r.done=true;}});}
+window.CrowdCore={reset,step,state:s};})();
